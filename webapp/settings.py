@@ -25,7 +25,7 @@ SECRET_KEY = '04*jdh4mtl2)htclhfvgoh)bf7-fy-70s^%(rr@*vnyhw5aofj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1']
+ALLOWED_HOSTS = ['localhost','127.0.0.1','lisasil.pythonanywhere.com']
 
 
 # Application definition
