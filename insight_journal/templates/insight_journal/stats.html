@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Stats</title>
+        <script src="https://cdn.anychart.com/js/8.0.1/anychart-core.min.js"></script>
+        <script src="https://cdn.anychart.com/js/8.0.1/anychart-pie.min.js"></script>
+    </head>
+
+    <body>
+        <div id="container" style="width: 50%; height: 50%"></div>
+        <script>
+
+            var total = num_past + num_present + num_future
+
+            var data = [
+                {x: "Past", value: ({{ num_past }} / total) * 100 },
+                {x: "Present", value: ({{ num_present }} / total) * 100 },
+                {x: "Future", value: ({{ num_future }} / total) * 100 }
+            ];
+
+            var time_chart = anychart.pie();
+            time_chart.title("Time Orientation");
+            time_chart.data(data);
+
+            time_chart.container('container');
+            time_chart.draw();
+        </script>
+    </body>
+</html>

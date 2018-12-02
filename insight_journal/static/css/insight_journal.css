@@ -6,7 +6,7 @@
 
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
     color: #ffffff;
-    font-size: 28pt;
+    font-size: 32pt;
     text-decoration: underline double #ffffff;
 }
 
@@ -32,6 +32,12 @@
 
 .entry-form textarea, .entry-form input {
     width: 100%;
+}
+
+.stats h3 {
+    color: #702FFA;
+    font-size: 18pt;
+    font-family: 'Merienda', cursive;
 }
 
 h1 a, h2 a, h3 a {
