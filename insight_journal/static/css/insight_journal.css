@@ -6,19 +6,53 @@
 
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
     color: #ffffff;
-    font-size: 36pt;
+    font-size: 28pt;
     text-decoration: underline double #ffffff;
 }
 
 .content {
+    color: #000000;
     margin-left: 40px;
 }
 
-h1 a, h2 a, h3 a, h4 a {
+.entry {
+    margin-bottom: 70px;
+}
+
+.entry h2 {
+    color: #702FFA;
+    font-size: 20pt;
+    font-family: Merienda;
+}
+
+.entry-edit h2 {
+    color: #702FFA;
+    font-family: Merienda;
+}
+
+.entry-form textarea, .entry-form input {
+    width: 100%;
+}
+
+h1 a, h2 a, h3 a {
     color: #702FFA;
     font-family: 'Merienda', cursive;
 }
 
+.save {
+    float: right;
+}
+
+.add-new, .add-new:hover, .add-new:visited {
+    color: #ffffff;
+    float: right;
+    font-size: 20pt;
+    margin-right: 20px;
+}
+
 body {
+    color: #000000;
     padding-left: 20px;
+    font-size: 12pt;
+    font-family: 'Overlock';
 }

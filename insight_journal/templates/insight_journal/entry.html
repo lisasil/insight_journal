@@ -2,6 +2,7 @@
 
 {% block content %}
     <div class="entry">
+        <a class="btn btn-default" href="{% url 'edit' pk=entry.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         <h2>{{ entry.title }}</h2>
         <p>{{ entry.text|linebreaksbr }}</p>
     </div>

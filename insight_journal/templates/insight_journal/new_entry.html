@@ -1,0 +1,11 @@
+{% extends 'insight_journal/base.html' %}
+
+{% block content %}
+    <div class="entry-edit">
+        <h2>New entry</h2>
+        <form method="POST" class="entry-form">{% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save btn btn-default">Save</button>
+        </form>
+    </div>
+{% endblock %}
