@@ -4,7 +4,7 @@ from .forms import EntryForm
 from django.shortcuts import redirect
 
 def entry_list(request):
-    entries = Entry.objects.order_by('-title')
+    entries = Entry.objects.order_by('-created_date')
     return render(request, 'insight_journal/entry_list.html', {'entries': entries})
 
 def entry(request, pk):
@@ -38,3 +38,7 @@ def edit(request, pk):
         form = EntryForm(instance=entry)
 
     return render(request, 'insight_journal/edit_entry.html', {'form': form})
+
+def stats(request, pk):
+    entry = get_object_or_404(Entry, pk=pk)
+    return render(request, 'insight_journal/testing.html')
