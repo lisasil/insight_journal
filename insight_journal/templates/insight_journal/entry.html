@@ -1,0 +1,8 @@
+{% extends 'insight_journal/base.html' %}
+
+{% block content %}
+    <div class="entry">
+        <h2>{{ entry.title }}</h2>
+        <p>{{ entry.text|linebreaksbr }}</p>
+    </div>
+{% endblock %}

@@ -1,22 +1,10 @@
-<html>
-    <head>
-        <title>Insight: A Daily Journal</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="/">Insight: A Daily Journal</a></h1>
-        </div>
+{% extends 'insight_journal/base.html' %}
 
-        <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">My first post</a></h2>
-            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+{% block content %}
+    {% for entry in entries %}
+        <div class="entry">
+            <h1><a href="{% url 'entry' pk=entry.pk %}">{{ entry.title }}</a></h1>
+            <p>{{ entry.text|linebreaksbr }}</p>
         </div>
-
-        <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">My second post</a></h2>
-            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
-        </div>
-    </body>
-</html>
+    {% endfor %}
+{% endblock %}
