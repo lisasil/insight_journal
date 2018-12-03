@@ -1,24 +1,24 @@
-{% extends 'insight_journal/base.html' %}
+<html>
+    <body>
+        <div class="stats">
 
-{% block content %}
-    <div class="stats">
+            <h3>Number of words:</h3>
+            {{ num_words }}
 
-        <h3>Number of words:</h3>
-        {{ num_words }}
+            <h3>Time orientation</h3>
+            <p>Past: {{ tense_dist.0 }}</p>
+            <p>Present: {{ tense_dist.1 }}</p>
+            <p>Future: {{ tense_dist.2 }}</p>
 
-        <h3>Time orientation</h3>
-        <p>Past: {{ tense_dist.0 }}</p>
-        <p>Present: {{ tense_dist.1 }}</p>
-        <p>Future: {{ tense_dist.2 }}</p>
+            <h3>Sentiment polarity</h3>
+            <p>Negative: {{ polar_scores.0 }}</p>
+            <p>Neutral: {{ polar_scores.1 }}</p>
+            <p>Positive: {{ polar_scores.2 }}</p>
 
-        <h3>Sentiment polarity</h3>
-        <p>Negative: {{ polar_scores.0 }}</p>
-        <p>Neutral: {{ polar_scores.1 }}</p>
-        <p>Positive: {{ polar_scores.2 }}</p>
+            <h3>Word polarity</h3>
+            <p>Negative: {{ polar_words.0 }}</p>
+            <p>Positive: {{ polar_words.2 }}</p>
 
-        <h3>Word polarity</h3>
-        <p>Negative: {{ polar_words.0 }}</p>
-        <p>Positive: {{ polar_words.2 }}</p>
-
-    </div>
-{% endblock %}
+        </div>
+    </body>
+</html>

@@ -10,7 +10,13 @@ def entry_list(request):
 
 def entry(request, pk):
     entry = get_object_or_404(Entry, pk=pk)
-    return render(request, 'insight_journal/entry.html', {'entry': entry})
+    orig_text = entry.text
+    stats = Stats(orig_text)
+    num_words = stats.getTotalWords()
+    tense_dist = stats.getTenseDist()
+    polar_scores = stats.getPolarizedScores()
+    polar_words = stats.getPolarizedWords()
+    return render(request, 'insight_journal/entry.html', {'entry': entry, 'orig_text': orig_text, 'num_words': num_words, 'tense_dist': tense_dist, 'polar_scores': polar_scores, 'polar_words': polar_words})
 
 def new(request):
     if request.method == "POST":

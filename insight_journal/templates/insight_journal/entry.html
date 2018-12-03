@@ -1,30 +1,105 @@
 {% extends 'insight_journal/base.html' %}
 
 {% block content %}
-    <div class="entry">
-        <a class="btn btn-default" href="{% url 'edit' pk=entry.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-        <h2>{{ entry.title }}</h2>
-        <p>{{ entry.text|linebreaksbr }}</p>
+
+
+
+    <div style="width: 200%; display: table;">
+        <div style="display: table-row">
+            <div style="width: 700px; height: 550px; display: inline-block;">
+
+                <div class="entry">
+                    <a class="btn btn-default" href="{% url 'edit' pk=entry.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <h2>{{ entry.title }}</h2>
+                    <p>{{ entry.text|linebreaksbr }}</p>
+                </div>
+
+                <p>Number of Words: {{num_words}}</p>
+
+            </div>
+
+            <div style="width: 100px; display: inline-block;">
+
+            </div>
+
+            <div style="width: 25%; display: inline-block;">
+
+                <canvas id="time-chart" width="250" height="200"></canvas>
+                <canvas id="sentiment-chart" width="250" height="200"></canvas>
+
+            </div>
+        </div>
     </div>
 
-    <div id="demo">
-        <button type="button" onclick="getStats()">Generate Stats</button>
-    </div>
+    <div id="myChart"></div>
 
-    <script type="text/javascript">
 
-        function getStats() {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("demo").innerHTML = this.responseText;
+
+
+    <script>
+
+        var str = "{{ orig_text|escapejs|lower }}";
+
+        var myConfig = {
+            type: 'wordcloud',
+            options: {
+                text: str,
+                minLength: 3,
+                ignore: ["a", "as", "am", "and", "to", "from", "the", "of", "but", "that", "it", "it's", "is", "in", "was", "so", "because", "with", "it'd"],
+            }
+        };
+
+        zingchart.render({
+        	id: 'myChart',
+        	data: myConfig,
+        	height: 400,
+        	width: '100%'
+        });
+
+    </script>
+
+
+    <script>
+
+        new Chart(document.getElementById("time-chart"), {
+            type: 'pie',
+            data: {
+                labels: ["Past", "Present", "Future"],
+                datasets: [{
+                    label: "Word tense",
+                    backgroundColor: ["#000000", "#00FFEE","#DEDEDE"],
+                    data: [{{ tense_dist.0 }},{{tense_dist.1 }},{{ tense_dist.2 }}]
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Time Orientation',
                 }
-            };
+            }
+        });
 
-            xhttp.open("GET", "testing.html", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send();
-        }
+    </script>
+
+    <script>
+
+        new Chart(document.getElementById("sentiment-chart"), {
+            type: 'pie',
+            data: {
+                labels: ["Negative", "Neutral", "Positive"],
+                datasets: [{
+                    label: "Sentiment",
+                    backgroundColor: ["#FF0000", "#FFF705","#38D100"],
+                    data: [{{ polar_scores.0 }},{{ polar_scores.1 }},{{ polar_scores.2 }}]
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Sentiment Polarity'
+                }
+            }
+        });
 
     </script>
 
