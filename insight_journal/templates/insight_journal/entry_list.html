@@ -2,9 +2,21 @@
 
 {% block content %}
     {% for entry in entries %}
-        <div class="entry">
-            <h1><a href="{% url 'entry' pk=entry.pk %}">{{ entry.title }}</a></h1>
-            <p>{{ entry.text|linebreaksbr }}</p>
+
+    <div style="width: 200%; display: table;">
+        <div style="display: table-row">
+
+            <div style="width: 700px; display: inline-block;">
+
+                <div class="entry">
+                    <h1><a href="{% url 'entry' pk=entry.pk %}">{{ entry.title }}</a></h1>
+                    <p>{{ entry.text|linebreaksbr }}</p>
+                </div>
+
+            </div>
+
         </div>
+    </div>
+
     {% endfor %}
 {% endblock %}

@@ -19,9 +19,14 @@
 
     <body>
         <div class="page-header">
-        <a href="{% url 'new' %}" class="add-new"><span class="glyphicon glyphicon-plus"></span></a>
-        <h1><a href="/">Insight: A Daily Journal</a></h1>
-        <hr>
+            {% if user.is_authenticated %}
+                <a href="{% url 'new' %}" class="add-new"><span class="glyphicon glyphicon-plus"></span></a>
+                <p class="auth">Hello {{ user.username }} (<a href="{% url 'logout' %}">Log out</a>)</p>
+            {% else %}
+                <a href="{% url 'login' %}" class="auth"><span class="glyphicon glyphicon-user"></span></a>
+            {% endif %}
+            <h1><a href="/">Insight: A Daily Journal</a></h1>
+            <hr>
         </div>
 
         <div class="content container">

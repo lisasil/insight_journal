@@ -2,14 +2,17 @@
 
 {% block content %}
 
-
-
     <div style="width: 200%; display: table;">
         <div style="display: table-row">
             <div style="width: 700px; height: 550px; display: inline-block;">
 
                 <div class="entry">
-                    <a class="btn btn-default" href="{% url 'edit' pk=entry.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+                    {% if user.is_authenticated %}
+                        <a class="btn btn-default" href="{% url 'edit' pk=entry.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <a class="btn btn-default" href="{% url 'remove' pk=entry.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+                    {% endif %}
+
+
                     <h2>{{ entry.title }}</h2>
                     <p>{{ entry.text|linebreaksbr }}</p>
                 </div>
@@ -18,14 +21,12 @@
 
             </div>
 
-            <div style="width: 100px; display: inline-block;">
-
-            </div>
+            <div style="width: 100px; display: inline-block;"></div>
 
             <div style="width: 25%; display: inline-block;">
 
-                <canvas id="time-chart" width="250" height="200"></canvas>
-                <canvas id="sentiment-chart" width="250" height="200"></canvas>
+                <canvas id="time-chart" width="250" height="250"></canvas>
+                <canvas id="sentiment-chart" width="250" height="250"></canvas>
 
             </div>
         </div>

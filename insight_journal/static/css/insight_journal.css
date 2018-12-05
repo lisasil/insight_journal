@@ -56,6 +56,14 @@ h1 a, h2 a, h3 a {
     margin-right: 20px;
 }
 
+.auth, .auth:hover, .auth:visited {
+    color: #ffffff;
+    float: right;
+    font-size: 20pt;
+    font-family: 'Merienda';
+    margin-right: 20px;
+}
+
 body {
     color: #000000;
     padding-left: 20px;
