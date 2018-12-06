@@ -8,4 +8,5 @@ PythonAnywhere  (cloud hosting)
 
 Other helpful packages used:
 Charts.js       (data visualization)
+ZingChart       (data visualization)
 NLTK            (python library)
