@@ -6,13 +6,17 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 
-
 from .models import Entry
 from .forms import EntryForm
 from .stats import Stats
 
 def entry_list(request):
-    entries = Entry.objects.order_by('-created_date')
+    if not request.user.is_authenticated:
+        print("not logged in")
+        return redirect('login')
+
+    entries = Entry.objects.filter(author = request.user).order_by('-created_date')
+
     return render(request, 'insight_journal/entry_list.html', {'entries': entries})
 
 def entry(request, pk):
