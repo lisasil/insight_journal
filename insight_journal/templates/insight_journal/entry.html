@@ -59,8 +59,7 @@
             type: 'wordcloud',
             options: {
                 text: str,
-                minLength: 3,
-                ignore: ["a", "as", "am", "and", "to", "from", "the", "of", "but", "that", "it", "it's", "is", "in", "was", "so", "because", "with", "it'd"],
+                ignore: ["a", "as", "am", "and", "to", "from", "for", "this", "the", "of", "but", "that", "it", "it's", "is", "in", "was", "so", "because", "with", "it'd"],
             }
         };
 
@@ -101,11 +100,11 @@
         new Chart(document.getElementById("sentiment-chart"), {
             type: 'pie',
             data: {
-                labels: ["Negative", "Neutral", "Positive"],
+                labels: ["Negative", "Positive"],
                 datasets: [{
                     label: "Sentiment",
-                    backgroundColor: ["#FF0000", "#FFF705","#38D100"],
-                    data: [{{ polar_scores.0 }},{{ polar_scores.1 }},{{ polar_scores.2 }}]
+                    backgroundColor: ["#FF0000","#38D100"],
+                    data: [{{ polar_scores.0 }},{{ polar_scores.2 }}]
                 }]
             },
             options: {
