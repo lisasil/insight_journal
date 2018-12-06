@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import login
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
+
 
 from .models import Entry
 from .forms import EntryForm
@@ -28,16 +30,10 @@ def signup(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Account created successfully')
 
-            User.objects.create(username=request.POST.get('username'), password=request.POST.get('password1'))
+            return redirect('signup')
 
-
-
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect('entry_list')
     else:
         form = UserCreationForm()
 
@@ -46,7 +42,7 @@ def signup(request):
 def login(request, user, backend=None):
     if request.method == "POST":
         username = request.POST['username']
-        password = request.POST['password']
+        password = request.POST['password1']
         user = authenticate(username=username, password=password)
 
         form = EntryForm(request.POST)

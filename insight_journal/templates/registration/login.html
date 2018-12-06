@@ -9,20 +9,7 @@
     <form method="POST" action="{% url 'login' %}">
         {% csrf_token %}
 
-        {% for field in form %}
-            <p>
-                {{ form.username.label_tag }}<br>
-                {{ field }}
-
-                {% if field.help_text %}
-                    <small style="color: grey">{{ field.help_text }}</small>
-                {% endif %}
-
-                {% for error in field.errors %}
-                    <p style="color: red">{{ error }}</p>
-                {% endfor %}
-            </p>
-        {% endfor %}
+        {{ form.as_p }}
 
         <input type="submit" value="Login" />
         <input type="hidden" name="next" value="{{ next }}" />

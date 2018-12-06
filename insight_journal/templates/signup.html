@@ -2,6 +2,14 @@
 
 {% block content %}
 
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
     <h2>Sign up</h2>
     <form method="POST">
         {% csrf_token %}

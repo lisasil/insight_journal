@@ -11,5 +11,5 @@ urlpatterns = [
     path('entry/new', views.new, name='new'),
     path('entry/<int:pk>/edit/', views.edit, name='edit'),
     path('entry/<int:pk>/remove/', views.remove, name='remove'),
-    url('accounts/signup/$', views.signup, name='signup'),
+    url('accounts/signup/', views.signup, name='signup'),
 ]

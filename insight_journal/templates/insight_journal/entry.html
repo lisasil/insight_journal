@@ -2,9 +2,9 @@
 
 {% block content %}
 
-    <div style="width: 200%; display: table;">
+    <div style="width: 150%; display: table;">
         <div style="display: table-row">
-            <div style="width: 700px; height: 550px; display: inline-block;">
+            <div style="width: 70%; height: 250px; display: inline-block;">
 
                 <div class="entry">
                     {% if user.is_authenticated %}
@@ -21,16 +21,30 @@
 
             </div>
 
-            <div style="width: 100px; display: inline-block;"></div>
+        </div>
+    </div>
 
-            <div style="width: 25%; display: inline-block;">
+    <br>
+    <hr>
+
+    <div style="width: 100%; display: table;">
+        <div style="display: table-row">
+
+            <div style="width: 50%; display: inline-block;">
 
                 <canvas id="time-chart" width="250" height="250"></canvas>
+
+            </div>
+
+            <div style="width: 50%; display: inline-block;">
+
                 <canvas id="sentiment-chart" width="250" height="250"></canvas>
 
             </div>
         </div>
     </div>
+
+    <br>
 
     <div id="myChart"></div>
 
