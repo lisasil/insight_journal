@@ -65,9 +65,8 @@ class Stats:
         future_count = len(future_list)
         total_count = past_count + present_count + future_count
 
-        if (total_count == 0) {
-            total_count = 1;
-        }
+        if total_count == 0:
+            total_count = 1
 
         tense_tuple = (round((past_count/total_count) * 100), round((present_count/total_count) * 100), round((future_count/total_count) * 100))
         return tense_tuple
